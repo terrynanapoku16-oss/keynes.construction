@@ -76,11 +76,14 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 });
 
 // ── FORM SUBMIT
-const formBtn = document.querySelector('.form-btn');
-if (formBtn) {
-  formBtn.addEventListener('click', () => {
-    const inputs = document.querySelectorAll('.fg input, .fg textarea, .fg select');
+const form = document.getElementById('contactForm');
+const formBtn = form?.querySelector('.form-btn');
+
+if (form) {
+  form.addEventListener('submit', (e) => {
+    const inputs = form.querySelectorAll('.fg input, .fg textarea, .fg select');
     let valid = true;
+
     inputs.forEach(inp => {
       if (!inp.value.trim() && inp.type !== 'hidden') {
         inp.style.borderColor = 'rgba(220,80,80,0.6)';
@@ -88,21 +91,13 @@ if (formBtn) {
         setTimeout(() => inp.style.borderColor = '', 2000);
       }
     });
-    if (valid) {
-      formBtn.textContent = 'Sent! We\'ll be in touch shortly.';
-      formBtn.style.background = '#3a7a3a';
-      formBtn.disabled = true;
 
-
-      const data = {};
-
-      inputs.forEach(input => {
-        if (input.name) {
-          data[input.name] = input.value.trim();
-        }
-      });
-
-      console.log(data);
+    // ONLY block submission if invalid
+    if (!valid) {
+      e.preventDefault();
+      return;
     }
+
+    // Do NOT fake success here — Formspree handles real result
   });
 }
