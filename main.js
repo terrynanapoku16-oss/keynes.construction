@@ -92,6 +92,8 @@ if (formBtn) {
       formBtn.textContent = 'Sent! We\'ll be in touch shortly.';
       formBtn.style.background = '#3a7a3a';
       formBtn.disabled = true;
+
+      alert(JSON.stringify(inputs))
     }
   });
 }
