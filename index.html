@@ -333,6 +333,7 @@
     <p class="eyebrow">Get in touch</p>
     <h2 class="big-title">Let's talk about<br><em>your project.</em></h2>
     <p class="body-text">Whether it's an extension, conversion, renovation or landscaping — get in touch for a free, no-obligation quote. We're always happy to discuss your ideas.</p>
+
     <div class="contact-details">
       <div class="cd"><div class="cd-icon">📞</div><div><p class="cd-label">Phone</p><p class="cd-val"><a href="tel:07732512279">07732 512279</a></p></div></div>
       <div class="cd"><div class="cd-icon">📍</div><div><p class="cd-label">Address</p><p class="cd-val">222 Wolverton Road, Blakelands<br>Milton Keynes, MK14 5AB</p></div></div>
@@ -340,30 +341,60 @@
       <div class="cd"><div class="cd-icon">🏢</div><div><p class="cd-label">Registered</p><p class="cd-val">Keynes Construction MK Limited<br>Co. No. 15614755</p></div></div>
     </div>
   </div>
+
   <div class="contact-form-wrap reveal-right">
     <h3 class="form-title">Free Quote Request</h3>
     <p class="form-sub">We'll respond within one working day</p>
-    <div class="frow">
-      <div class="fg"><label>First name</label><input type="text" placeholder="John"></div>
-      <div class="fg"><label>Last name</label><input type="text" placeholder="Smith"></div>
-    </div>
-    <div class="fg"><label>Email</label><input type="email" placeholder="john@email.com"></div>
-    <div class="fg"><label>Phone</label><input type="tel" placeholder="07700 000 000"></div>
-    <div class="fg"><label>Type of work</label>
-      <select>
-        <option value="">Select a service...</option>
-        <option>Extension</option>
-        <option>Loft / Garage / Basement Conversion</option>
-        <option>Barn Conversion</option>
-        <option>Renovation</option>
-        <option>Structural Works</option>
-        <option>General Building</option>
-        <option>Hard Landscaping</option>
-        <option>Other / Multiple</option>
-      </select>
-    </div>
-    <div class="fg"><label>Tell us about your project</label><textarea placeholder="Location, scope, rough timescale..."></textarea></div>
-    <button class="form-btn" onclick="alert('Thank you! We\'ll be in touch within one working day.')">Send Enquiry →</button>
+
+    <form action="https://formspree.io/f/myklnooe" method="POST">
+      
+      <div class="frow">
+        <div class="fg">
+          <label>First name</label>
+          <input type="text" name="firstName" placeholder="John" required>
+        </div>
+
+        <div class="fg">
+          <label>Last name</label>
+          <input type="text" name="lastName" placeholder="Smith" required>
+        </div>
+      </div>
+
+      <div class="fg">
+        <label>Email</label>
+        <input type="email" name="email" placeholder="john@email.com" required>
+      </div>
+
+      <div class="fg">
+        <label>Phone</label>
+        <input type="tel" name="phone" placeholder="07700 000 000">
+      </div>
+
+      <div class="fg">
+        <label>Type of work</label>
+        <select name="service" required>
+          <option value="">Select a service...</option>
+          <option>Extension</option>
+          <option>Loft / Garage / Basement Conversion</option>
+          <option>Barn Conversion</option>
+          <option>Renovation</option>
+          <option>Structural Works</option>
+          <option>General Building</option>
+          <option>Hard Landscaping</option>
+          <option>Other / Multiple</option>
+        </select>
+      </div>
+
+      <div class="fg">
+        <label>Tell us about your project</label>
+        <textarea name="message" placeholder="Location, scope, rough timescale..." required></textarea>
+      </div>
+
+      <!-- Optional: redirect after submit -->
+      <!-- <input type="hidden" name="_redirect" value="https://yourwebsite.com/thank-you"> -->
+
+      <button type="submit" class="form-btn">Send Enquiry →</button>
+    </form>
   </div>
 </section>
 
