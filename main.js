@@ -26,13 +26,13 @@ if (window.matchMedia('(hover: hover)').matches && cursor) {
   document.addEventListener('mousemove', e => {
     mx = e.clientX; my = e.clientY;
     cursor.style.left = mx + 'px';
-    cursor.style.top  = my + 'px';
+    cursor.style.top = my + 'px';
   }, { passive: true });
   function animRing() {
     rx += (mx - rx) * 0.12;
     ry += (my - ry) * 0.12;
     ring.style.left = rx + 'px';
-    ring.style.top  = ry + 'px';
+    ring.style.top = ry + 'px';
     requestAnimationFrame(animRing);
   }
   animRing();
@@ -94,8 +94,15 @@ if (formBtn) {
       formBtn.disabled = true;
 
 
-      console.log(inputs)
-      console.log(JSON.stringify(inputs))
+      const data = {};
+
+      inputs.forEach(input => {
+        if (input.name) {
+          data[input.name] = input.value.trim();
+        }
+      });
+
+      console.log(data);
     }
   });
 }
