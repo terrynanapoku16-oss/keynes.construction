@@ -93,7 +93,9 @@ if (formBtn) {
       formBtn.style.background = '#3a7a3a';
       formBtn.disabled = true;
 
-      alert(JSON.stringify(inputs))
+
+      console.log(inputs)
+      console.log(JSON.stringify(inputs))
     }
   });
 }
